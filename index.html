@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Frontend Mentor | Todo app</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <div class="head">
+        <h1>Todo</h1>
+        <img src="./images/icon-moon.svg" alt="" class="moon" />
+      </div>
+
+      <div class="input_todo">
+        <label for="input_one" class="label_one"> </label>
+        <input
+          type="text"
+          placeholder="Create a new todo..."
+          class="todo_input"
+          id="input_one"
+          onkeydown="handleKeyDown(event)"
+        />
+      </div>
+
+      <div class="todo_list">
+        <div class="first_option">
+          <div class="one">
+            <label for="input_one" class="label_two">
+              <img src="./images/icon-check.svg" alt="" class="check" />
+            </label>
+            <p id="outputText">Complete online JavaScript course</p>
+          </div>
+          <img src="./images/icon-cross.svg" alt="" class="mobile" />
+          <hr class="line" />
+        </div>
+
+        <div class="first_option">
+          <div class="one">
+            <label for="input_one" class="label_two">
+              <img src="./images/icon-check.svg" alt="" class="check" />
+            </label>
+            <p id="outputText">Jog around the park 3x</p>
+          </div>
+          <img src="./images/icon-cross.svg" alt="" class="mobile" />
+          <hr class="line" />
+        </div>
+
+        <div class="first_option">
+          <div class="one">
+            <label for="input_one" class="label_two">
+              <img src="./images/icon-check.svg" alt="" class="check" />
+            </label>
+            <p id="outputText">10 minutes meditation</p>
+          </div>
+          <img src="./images/icon-cross.svg" alt="" class="mobile" />
+          <hr class="line" />
+        </div>
+
+        <div class="first_option">
+          <div class="one">
+            <label for="input_one" class="label_two">
+              <img src="./images/icon-check.svg" alt="" class="check" />
+            </label>
+            <p id="outputText">Read for 1 hour</p>
+          </div>
+          <img src="./images/icon-cross.svg" alt="" class="mobile" />
+          <hr class="line" />
+        </div>
+
+        <div class="first_option">
+          <div class="one">
+            <label for="input_one" class="label_two">
+              <img src="./images/icon-check.svg" alt="" class="check" />
+            </label>
+            <p id="outputText">Pick up groceries</p>
+          </div>
+          <img src="./images/icon-cross.svg" alt="" class="mobile" />
+          <hr class="line" />
+        </div>
+
+        <div class="first_option">
+          <div class="one">
+            <label for="input_one" class="label_two">
+              <img src="./images/icon-check.svg" alt="" class="check" />
+            </label>
+            <p id="outputText">Complete Todo App on Frontend Mentor</p>
+          </div>
+          <img src="./images/icon-cross.svg" alt="" class="mobile" />
+          <hr class="line" />
+        </div>
+
+        <div class="last">
+          <div>
+            <p id="count">items left</p>
+          </div>
+          <div class="middle small">
+            <p class="all">All</p>
+            <p class="active">Active</p>
+            <p class="complete">Completed</p>
+          </div>
+          <div>
+            <p class="clear">Clear Completed</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="middle desk">
+        <p class="all">All</p>
+        <p class="active">Active</p>
+        <p class="complete">Completed</p>
+      </div>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>
