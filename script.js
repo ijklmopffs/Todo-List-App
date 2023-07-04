@@ -15,7 +15,11 @@ const countElement = document.getElementById("count");
 const all = document.querySelector(".all");
 const active = document.querySelector(".active");
 const complete = document.querySelector(".complete");
+const mobileAll = document.querySelector(".desk .all");
+const mobileActive = document.querySelector(".desk .active");
+const mobileComplete = document.querySelector(".desk .complete");
 const allLines = document.querySelectorAll(".line");
+const allMobile = document.querySelectorAll(".mobile");
 const clear = document.querySelector(".clear");
 const middle = document.querySelector(".desk");
 let isSun = false;
@@ -105,15 +109,17 @@ allLabelTwo.forEach((labelTwo) => {
     // Get the text output element inside the parent div
     const textOutput = parentDiv.querySelector("p");
     textOutput.classList.toggle("checked");
+
+    updateCount();
   });
 });
 
 function updateCount() {
-  const imageElements = parentDiv.querySelectorAll(
-    ".first_option:not(.clicked)"
-  );
-  const imageCount = imageElements.length;
-  countElement.textContent = `${imageCount} items left`;
+  const visibleElements = Array.from(
+    parentDiv.querySelectorAll(".first_option:not(.clicked)")
+  ).filter((element) => window.getComputedStyle(element).display !== "none");
+  const visibleCount = visibleElements.length;
+  countElement.textContent = `${visibleCount} items left`;
 }
 
 updateCount();
@@ -149,5 +155,42 @@ clear.addEventListener("click", () => {
     if (first.classList.contains("clicked")) {
       first.style.display = "none";
     }
+  });
+});
+
+mobileComplete.addEventListener("click", () => {
+  allFirstOptions.forEach((first) => {
+    if (!first.classList.contains("clicked")) {
+      first.style.display = "none";
+    } else {
+      first.style.display = "";
+    }
+  });
+});
+
+mobileAll.addEventListener("click", () => {
+  allFirstOptions.forEach((first) => {
+    first.style.display = "";
+  });
+});
+
+mobileActive.addEventListener("click", () => {
+  allFirstOptions.forEach((first) => {
+    if (first.classList.contains("clicked")) {
+      first.style.display = "none";
+    } else {
+      first.style.display = "";
+    }
+  });
+});
+
+allMobile.forEach((mobile) => {
+  mobile.addEventListener("click", () => {
+    const parentDiv = mobile.parentNode;
+    const parentDiv2 = mobile.closest(".first_option");
+
+    parentDiv2.style.display = "none";
+
+    updateCount();
   });
 });

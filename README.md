@@ -35,7 +35,7 @@ Users should be able to:
 ### Links
 
 - [Solution URL](https://github.com/ijklmopffs/Todo-List-App)
-- [Live Site URL](toDoListapp.netlify.app)
+- [Live Site URL](https://todolistapp-new.netlify.app/)
 
 ## My process
 
