@@ -24,9 +24,9 @@ const clear = document.querySelector(".clear");
 const middle = document.querySelector(".desk");
 let isSun = false;
 
-function handleKeyDown(event) {
-  if (event.keyCode === 13) {
-    event.preventDefault();
+function handleKeyDown(e) {
+  if (e.keyCode === 13) {
+    e.preventDefault();
     submitInput();
   }
 }
@@ -72,6 +72,9 @@ function submitInput() {
   div.appendChild(hr);
 
   parentDiv.insertBefore(div, lastChild);
+  updateCount();
+  attachEventListeners();
+  showActive();
 }
 
 moon.addEventListener("click", () => {
@@ -96,43 +99,54 @@ moon.addEventListener("click", () => {
   middle.classList.toggle("dark-mode");
 });
 
-allLabelTwo.forEach((labelTwo) => {
-  labelTwo.addEventListener("click", () => {
-    labelTwo.classList.toggle("checked");
-    // Get the parent div of the clicked label
-    const parentDiv = labelTwo.parentNode;
-    const image = parentDiv.querySelector("img");
-    const parentDiv2 = labelTwo.closest(".first_option");
-    parentDiv2.classList.toggle("clicked");
-
-    image.classList.toggle("checked");
-    // Get the text output element inside the parent div
-    const textOutput = parentDiv.querySelector("p");
-    textOutput.classList.toggle("checked");
-
-    updateCount();
+function attachEventListeners() {
+  const allLabelTwos = document.querySelectorAll(".label_two");
+  allLabelTwos.forEach((labelTwo) => {
+    labelTwo.addEventListener("click", function () {
+      labelTwo.classList.toggle("checked");
+      const parentDiv = labelTwo.parentNode;
+      const image = parentDiv.querySelector("img");
+      const parentDiv2 = labelTwo.closest(".first_option");
+      parentDiv2.classList.toggle("clicked");
+      image.classList.toggle("checked");
+      const textOutput = parentDiv.querySelector("p");
+      textOutput.classList.toggle("checked");
+      updateCount();
+    });
   });
-});
+}
+
+attachEventListeners();
 
 function updateCount() {
   const visibleElements = Array.from(
     parentDiv.querySelectorAll(".first_option:not(.clicked)")
   ).filter((element) => window.getComputedStyle(element).display !== "none");
   const visibleCount = visibleElements.length;
-  countElement.textContent = `${visibleCount} items left`;
+  let sentence;
+  if (visibleCount === 1) {
+    sentence = `${visibleCount} item left`;
+  } else {
+    sentence = `${visibleCount} items left`;
+  }
+  countElement.textContent = sentence;
 }
 
 updateCount();
 
-active.addEventListener("click", () => {
-  allFirstOptions.forEach((first) => {
-    if (first.classList.contains("clicked")) {
-      first.style.display = "none";
-    } else {
-      first.style.display = "";
-    }
+function showActive() {
+  const active = document.querySelector(".active");
+  active.addEventListener("click", () => {
+    allFirstOptions.forEach((first) => {
+      if (first.classList.contains("clicked")) {
+        first.style.display = "none";
+      } else {
+        first.style.display = "";
+      }
+    });
   });
-});
+}
+showActive();
 
 complete.addEventListener("click", () => {
   allFirstOptions.forEach((first) => {
